@@ -19,7 +19,7 @@ use Gaia\Behavioral\Alias;
  *
  * @author Arif Muslax <muslax@gmail.com>
  */
-abstract class Element
+abstract class Element implements Alias
 {
     private string $name;
     
