@@ -1,0 +1,9 @@
+# Files
+.DS_Store
+.java-version
+composer.lock
+
+# Directories
+.idea/
+vendor/
+local-tests/

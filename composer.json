@@ -1,0 +1,25 @@
+{
+    "name": "gaia/behavioral",
+    "description": "Gaia Behavioral",
+    "type": "library",
+    "homepage": "http://strenan.net",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arif Muslax",
+            "email": "muslax@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Gaia\\Behavioral\\": "src/",
+            "Gaia\\Behavioral\\Application\\": "src/Application/",
+            "Gaia\\Behavioral\\Resources\\": "src/Resources/"
+        }
+    }
+}
