@@ -140,7 +140,7 @@ abstract class Element
      *
      * @return bool
      */
-    public function isAlias() : bool
+    public function hasAlias() : bool
     {
         return $this->alias && $this->alias != '';
     }
