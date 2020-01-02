@@ -11,6 +11,8 @@
 
 namespace Gaia\Behavioral\Application;
 
+use Gaia\Behavioral\Element;
+
 /**
  * SimpleElement Class.
  *
