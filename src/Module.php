@@ -77,7 +77,7 @@ abstract class Module
     public function setWorkbook(Workbook $book) : Module
     {
         if (! $book instanceof Workbook) {
-            throw new \Exception("Bukan Workbook yang diberikan.")
+            throw new \Exception("Bukan Workbook yang diberikan.");
         }
         $this->book = $book;
         $this->init_books();
@@ -102,7 +102,7 @@ abstract class Module
      * @return object
      * @param mixed
      */
-    public abstract function generateWorkbook(Evidence $evidence, mixed ...$options) : ?object;
+    public abstract function generateWorkbook(Evidence $evidence, array $options = []) : ?object;
     
     /**
      * Generates report.
@@ -112,5 +112,5 @@ abstract class Module
      * @return void
      * @param what
      */
-    public abstract function generateReport(Evidence $evidence, mixed ...$options) : ?object;
+    public abstract function generateReport(Evidence $evidence, array $options = []) : ?object;
 } // END abstract class Module
