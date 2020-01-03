@@ -19,6 +19,7 @@
         "psr-4": {
             "Gaia\\Behavioral\\": "src/",
             "Gaia\\Behavioral\\Application\\": "src/Application/",
+            "Gaia\\Behavioral\\Factory\\": "src/Factory/",
             "Gaia\\Behavioral\\Resources\\": "src/Resources/",
             "Gaia\\Behavioral\\Samples\\": "src/Samples/"
         }
