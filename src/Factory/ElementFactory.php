@@ -12,6 +12,8 @@
 namespace Gaia\Behavioral\Factory;
 
 use Gaia\Behavioral\Element;
+use Gaia\Behavioral\Application\SimpleElement;
+use Gaia\Behavioral\Application\CompositeElement;
 
 /**
  * Abstract factory for creating element.
@@ -28,5 +30,24 @@ abstract class ElementFactory
      * @return Element object
      * @param mixed $properties
      */
-    protected abstract function createElement(mixed $properties) : Element;
+    public static function createElement($properties) : Element
+    {
+        $properties['description'] ??= '';
+        
+        if (isset($properties['composite']) && $properties['composite']) {
+            return new CompositeElement(
+                $properties['name'],
+                $properties['symbol'],
+                $properties['definition'],
+                $properties['description']
+            );
+        }
+        
+        return new SimpleElement(
+            $properties['name'],
+            $properties['symbol'],
+            $properties['definition'],
+            $properties['description']
+        );
+    }
 } // END abstract class ElementFactory
