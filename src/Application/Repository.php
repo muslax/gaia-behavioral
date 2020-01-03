@@ -13,8 +13,9 @@ namespace Gaia\Behavioral\Application;
 
 use Gaia\Behavioral\GB;
 use Gaia\Behavioral\Element;
-use Gaia\Behavioral\Factory\SimpleElementFactory;
-use Gaia\Behavioral\Factory\CompositeElementFactory;
+use Gaia\Behavioral\Factory\ElementFactory;
+// use Gaia\Behavioral\Factory\SimpleElementFactory;
+// use Gaia\Behavioral\Factory\CompositeElementFactory;
 
 /**
  * Singleton class that manage each and all behavioral elements.
@@ -90,18 +91,7 @@ final class Repository
         $count = 0;
         $data = $validation['data']; // All entries are now valid
         foreach ($data as $entry) { 
-            $factory = new SimpleElementFactory();
-            if (isset($entry['composite']) && $entry['composite']) {
-                $factory = new CompositeElementFactory();
-            }
-            
-            $entry['description'] ??= '';
-            $elm = $factory->createElement([
-                'name'       => $entry['name'],
-                'symbol'     => $entry['symbol'],
-                'definition' => $entry['definition'],
-                'description'=> $entry['description']
-            ]);
+            $elm = ElementFactory::createElement($entry);
             
             foreach ($entry as $key => $val) {
                 if (!in_array($key, GB::ELEMENT_IMMUTABLE_KEYS)) {
