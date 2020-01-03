@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- IF attribute groupOf exists,
+AND its value contains other element's ID,
+THAN it is a CompositeElement
+-->
+<ElementRepository version="" releasDate="">
+    <Element id="ABC" groupOf="">
+        <Name>NAMA</Name>
+        <Alias>ALIAS</Alias>
+        <Definition>DEFINITION</Definition>
+        <Description>DESCRIPTION</Description>
+        <Comment>Other properties can be appended this way.</Comment>
+    </Element>
+    <Element id="BCD" groupOf="">
+        <Name>NAMA</Name>
+        <Alias>ALIAS</Alias>
+        <Definition>DEFINITION</Definition>
+        <Description>DESCRIPTION</Description>
+        <Comment>Other properties can be appended this way.</Comment>
+    </Element>
+    <Element id="XYZ" groupOf="">
+        <Name>NAMA</Name>
+        <Alias>ALIAS</Alias>
+        <Definition>DEFINITION</Definition>
+        <Description>DESCRIPTION</Description>
+        <Comment>Other properties can be appended this way.</Comment>
+    </Element>
+</ElementRepository>

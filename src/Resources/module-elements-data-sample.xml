@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+-->
+<Module>
+    <Element id="ABC" groupOf="">
+        <Alias>ALIAS</Alias>
+        <Description>DESCRIPTION</Description>
+        <Comment>Other properties can be appended this way.</Comment>
+    </Element>
+    <Element id="BCD" groupOf="">
+        <Alias>ALIAS</Alias>
+        <Description>DESCRIPTION</Description>
+        <Comment>Other properties can be appended this way.</Comment>
+    </Element>
+    <Element id="XYZ" groupOf="">
+        <Alias>ALIAS</Alias>
+        <Description>DESCRIPTION</Description>
+        <Comment>Other properties can be appended this way.</Comment>
+    </Element>
+</Module>
