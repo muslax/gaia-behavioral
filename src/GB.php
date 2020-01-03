@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Gaia\Behacioral;
+namespace Gaia\Behavioral;
 
 /**
  * Class that provides constants to use.

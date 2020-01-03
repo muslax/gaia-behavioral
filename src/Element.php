@@ -60,7 +60,7 @@ abstract class Element implements Alias
      */
     public function getName()
     {
-        return $this->isAlias() && $this->useAlias ? $this->alias : $this->name;
+        return $this->hasAlias() && $this->useAlias ? $this->alias : $this->name;
     }
     
     /**
@@ -112,7 +112,7 @@ abstract class Element implements Alias
      *
      * @throws \Exception If the specified $key belongs to a protected property
      */
-    public function setProperty(string $key, string $value) : BehavioralElement
+    public function setProperty(string $key, string $value) : Element
     {
         if (in_array($key, GB::ELEMENT_IMMUTABLE_KEYS)) {
             throw new \OutOfBoundsException("Immutable property cannot be reassigned.");

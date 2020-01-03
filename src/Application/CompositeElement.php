@@ -12,6 +12,7 @@
 namespace Gaia\Behavioral\Application;
 
 use Gaia\Behavioral\Element;
+use Gaia\Behavioral\Composite;
 
 /**
  * Class that does the deeds.
