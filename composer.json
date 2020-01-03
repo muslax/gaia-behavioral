@@ -19,7 +19,8 @@
         "psr-4": {
             "Gaia\\Behavioral\\": "src/",
             "Gaia\\Behavioral\\Application\\": "src/Application/",
-            "Gaia\\Behavioral\\Resources\\": "src/Resources/"
+            "Gaia\\Behavioral\\Resources\\": "src/Resources/",
+            "Gaia\\Behavioral\\Samples\\": "src/Samples/"
         }
     }
 }

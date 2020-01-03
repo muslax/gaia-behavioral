@@ -34,7 +34,7 @@ abstract class Workbook
      *
      * @throws \Exception
      */
-    protected abstract static function createFromXmlFile($path);
+    protected abstract static function createFromXmlFile($path) : Workbook;
     
     /**
      * Inits...
@@ -77,5 +77,6 @@ abstract class Workbook
      */
     public function getXPath() : \DOMXPath
     {
+        return $this->xpath;
     }
 } // END abstract class Workbook

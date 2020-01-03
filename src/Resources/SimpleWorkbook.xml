@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+id:            Module identifier
+moduleName:    Formal name
+moduleTitle:   Title, consumer-friendly name
+moduleVersion: Version
+bookType:      Simple / Simple-teaser / Story
+optionsMode:   Likert / Statement
+optionsNums:   2 / 4 / 5
+optionsSelect: 1 / 2
+evidenceType:  Option / Writing / Behavior
+testItems:     Jumlah soal
+releaseDate:   Tanggal rilis Workbook
+-->
+<Workbook
+    id            = "SIMPLE-89208d7A8201"
+    moduleName    = "SIMPLE Default Module"
+    moduleTitle   = "Gaia Behavior Simple Module"
+    moduleVersion = "1.0"
+    bookType      = "Simple"
+    optionsMode   = "Likert"
+    optionsNums   = "4"
+    optionsSelect = "1"
+    evidenceType  = "Option"
+    testItems     = "27"
+    releaseDate   = "2020-01-19 15:21:52 WIB">
+    <BookElements>
+        <Element id="A11" parentId="" symbol="ADBG">Analytical Meetup</Element>
+        <Element id="A12" parentId="A11" symbol="XCFH">Meetup Planning</Element>
+        <Element id="A13" parentId="A11" symbol="ADCL">Logistic Planning</Element>
+        <Element id="A14" parentId="A11" symbol="RTSS">Gherkin</Element>
+    </BookElements>
+    <BookIntro>
+        <h1>Pengantar</h1>
+        <p>Begini, kerja sama tim perlu <strong>dicetak tebal</strong> dan dilakukan dalam lingkungan kerja, karena Anda bisa mempelajari berbagai jenis pengetahuan dan ketrampilan dari orang lain, serta juga dapat meningkatkan kemampuan dan keterampilan diri Anda.</p>
+    </BookIntro>
+    <BookBody mode="Jaguar v2.0">
+        <Section>
+            <Story>
+                <h3>Mobil Jaguar dapat melaju tanpa mesin</h3>
+                <figure>
+                    <img src=""/>
+                </figure>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </Story>
+            <TestItem>
+            	<Teaser>
+            		<p>Pelayanan pada <strong>masyarakat</strong> selain beragam juga menjadi semakin kompleks karena senantiasa berhubungan dengan beragam khalayak yang memiliki keanekaragaman kepentingan dan tujuan.</p>
+            	</Teaser>
+            	<Select>
+            		<Option value="INT">
+            			Bertingkah laku sesuai dengan perkataan serta berkata sesuai dengan fakta.
+            		</Option>
+            		<Option value="KER">
+            			Selalu berupaya menjalin kerjasama yang baik dengan semua pihak yang terlibat.
+            		</Option>
+            		<Option value="PPU">
+            			Mengerjakan tugas dengan mengikuti standar yang sudah ditentukan, serta bersikap objektif dan profesional.
+            		</Option>
+            		<Option value="OPH">
+            			Menyelesaikan tugas dengan tuntas, dan dapat diandalkan.
+            		</Option>
+            	</Select>
+            </TestItem>
+            <TestItem>
+            	<Teaser>
+            		<p>Kerja sama tim sangat penting dilakukan dalam lingkungan kerja, karena Anda bisa mempelajari berbagai jenis pengetahuan dan ketrampilan dari orang lain, serta juga dapat meningkatkan kemampuan dan keterampilan diri Anda.</p>
+            	</Teaser>
+            	<Select>
+            		<Option value="KOM">
+            			Menginterpretasi dan merespon informasi dan pesan secara tetapt guna.
+            		</Option>
+            		<Option value="KER">
+            			Menghargai masukan dari orang lain dan sebaliknya, apabila dipandang perlu memberikan usulan-usulan bagi mereka.
+            		</Option>
+            		<Option value="PBA">
+            			Mampu memahami, menerima, peka terhadap perbedaan individu/kelompok yang ada.
+            		</Option>
+            		<Option value="OPH">
+            			Bekerja dengan teliti dan hati-hati guna meminimalkan kesalahan.
+            		</Option>
+            	</Select>
+            </TestItem>
+            <TestItem>
+            	<Teaser>
+            		<p>Kompetensi komunikasi aparatur negara yang baik, akan meningkatkan upaya  pelaksanaan tugas kerja, dan prestasi kerja yang berpedoman pada kode etik profesi untuk mewujudkan sumber daya ASN yang profesional.</p> 
+            	</Teaser>
+            	<Select>
+            		<Option value="PPU">
+            			Menjalankan tugas-tugas dengan mengikuti standar pelayanan yang terbuka serta transparan.
+            		</Option>
+            		<Option value="OPH">
+            			Bersedia menerima masukan, dan mengajukan usulan sehubungan dengan upaya efektifitas dan efisiensi di lingkungan kerja.
+            		</Option>
+            		<Option value="MPE">
+            			Mencerna informasi mengenai perubahan yang terjadi di organisasi dan berusaha menyesuaikan diri dengan perubahan tersebut.
+            		</Option>
+            		<Option value="KOM">
+            			Menyampaikan informasi atau pendapat dengan jelas, singkat dan tepat dengan mengikuti alur yang logis.
+            		</Option>
+            	</Select>
+            </TestItem>
+        </Section>
+    </BookBody>
+    <Epilog>
+        <p>Wassalam.</p>
+    </Epilog>
+</Workbook>
