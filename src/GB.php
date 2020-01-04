@@ -24,6 +24,9 @@ final class GB
     /** Reserved keys for BehavioralElement */
     const ELEMENT_RESERVED_KEYS  = ['description', 'alias'];
     
+    /** LEGAL MODULES */
+    const GB_VALID_MODULES = ["AIME", "CSI", "PSI", "GPQ", "MATE", "GATE", "SJT", "PRO-L", "INTRAY", "WAWANCARA", "FGD"];
+    
     /** GB */
     const GB_EVIDENCE_OPTION     = 'Option';
     
