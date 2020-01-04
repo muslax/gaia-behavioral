@@ -53,6 +53,30 @@ final class Repository
     }
     
     /**
+     * Find elements by type (composite, simple)
+     *
+     * @return void
+     * @param type
+     *
+     * @throws \Exception
+     */
+    public function findByType(string $type = '') : array
+    {
+        if (!in_array($type, ['simple', 'composite'])) return [];
+        
+        $cname = ucfirst($type). 'Element';
+        echo $cname. "\n";
+        $ret = [];
+        $it = $this->repo->getIterator();
+        while ($it->valid()) {
+            if (substr(get_class($it->current()), -strlen($cname)) == $cname) $ret[] = $it->current();
+            $it->next();
+        }
+        
+        return $ret;
+    }
+    
+    /**
      * Returns array of all items in this repo.
      *
      * @return array
