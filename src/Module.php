@@ -13,7 +13,7 @@ namespace Gaia\Behavioral;
 
 use Gaia\Behavioral\Element;
 use Gaia\Behavioral\Evidence;
-use Gaia\Behavioral\Workbook;
+use Gaia\Behavioral\WorkBook;
 
 /**
  * Class that define Behavioral Module.
@@ -35,7 +35,9 @@ abstract class Module
     private int    $_optionsSelect;
     private int    $_testItems;
 
-    private Workbook $book;
+    private WorkBook $book;
+    
+    private array $bookMeta = [];
     
     private array $elements;
     
@@ -60,7 +62,7 @@ abstract class Module
     
     protected function __construct($book = null)
     {
-        if ($book instanceof Workbook) {
+        if ($book instanceof WorkBook) {
             $this->book = $book;
             $this->init_books();
         }
@@ -70,14 +72,14 @@ abstract class Module
      * Set or change workbook for this module.
      *
      * @return Module object
-     * @param Workbook $book
+     * @param WorkBook $book
      *
      * @throws \Exception
      */
-    public function setWorkbook(Workbook $book) : Module
+    public function setWorkBook(WorkBook $book) : Module
     {
-        if (! $book instanceof Workbook) {
-            throw new \Exception("Bukan Workbook yang diberikan.");
+        if (! $book instanceof WorkBook) {
+            throw new \Exception("Bukan WorkBook yang diberikan.");
         }
         $this->book = $book;
         $this->init_books();
@@ -95,14 +97,14 @@ abstract class Module
     public abstract function score(Evidence $evidence) : array;
     
     /**
-     * Generate Workbook object with options.
+     * Generate WorkBook object with options.
      *
      * @author Arif Muslax <muslax@gmail.com>
      *
      * @return object
      * @param mixed
      */
-    public abstract function generateWorkbook(Evidence $evidence, array $options = []) : ?object;
+    public abstract function generateWorkBook(Evidence $evidence, array $options = []) : ?object;
     
     /**
      * Generates report.

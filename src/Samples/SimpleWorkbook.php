@@ -2,11 +2,11 @@
 
 namespace Gaia\Behavioral\Samples;
 
-use Gaia\Behavioral\Workbook;
+use Gaia\Behavioral\WorkBook;
 
-class SimpleWorkbook extends Workbook
+class SimpleWorkBook extends WorkBook
 {
-    public static function createFromXmlFile($path) : Workbook
+    public static function createFromXmlFile($path) : WorkBook
     {
         try {
             $dom = new \DOMDocument();

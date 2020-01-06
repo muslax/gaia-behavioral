@@ -12,29 +12,39 @@
 namespace Gaia\Behavioral;
 
 /**
- * Abstract class that provides general Workbook features.
+ * Abstract class that provides general WorkBook features.
  *
  * @author Arif Muslax <muslax@gmail.com>
  */
-abstract class Workbook
+abstract class WorkBook
 {
     private \DOMDocument $dom;
     
-    private \DOMElement $docroot;
+    // private \DOMElement $docroot;
     
-    private \DOMXPath $xpath;
+    // private \DOMXPath $xpath;
     
     protected function __construct() { }
     
+    protected function validate(\DOMDocument $dom)
+    {
+        $doc = $dom->documentElement;
+        $xpath = $this->getXPath();
+        
+        // It has to be WorkBook and has id
+        if ($doc->nodeName != 'WorkBook') return false;
+        if (strlen($doc->getAttribute('id')) < 16) return false;
+    }
+    
     /**
-     * Create Workbook instance from XML file.
+     * Create WorkBook instance from XML file.
      *
-     * @return Workbook object
+     * @return WorkBook object
      * @param string $path
      *
      * @throws \Exception
      */
-    protected abstract static function createFromXmlFile($path) : Workbook;
+    protected abstract static function createFromXmlFile($path) : WorkBook;
     
     /**
      * Inits...
@@ -45,13 +55,13 @@ abstract class Workbook
     protected function init(\DOMDocument $dom)
     {
         $this->dom = $dom;
-        $this->xpath = new \DOMXPath($dom);
-        $this->documentElement = $dom->documentElement;
-        $doc = $dom->documentElement;
+        // $this->xpath = new \DOMXPath($dom);
+        // $this->documentElement = $dom->documentElement;
+        // $doc = $dom->documentElement;
     }
     
     /**
-     * Returns DOMDocument from the XML Workbook
+     * Returns DOMDocument from the XML WorkBook
      *
      * @return DOMDocument
      */
@@ -61,13 +71,13 @@ abstract class Workbook
     }
     
     /**
-     * Returns the root of the XML Workbook.
+     * Returns the root of the XML WorkBook.
      *
      * @return DOMElement
      */
     public function getDocumentElement() : \DOMElement
     {
-        return $this->documentElement;
+        return $this->dom->documentElement;
     }
     
     /**
@@ -77,6 +87,9 @@ abstract class Workbook
      */
     public function getXPath() : \DOMXPath
     {
+        if (! isset($this->xpath)) {
+            $this->xpath = new \DOMXPath($this->dom);
+        }
         return $this->xpath;
     }
-} // END abstract class Workbook
+} // END abstract class WorkBook
