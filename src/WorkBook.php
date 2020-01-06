@@ -11,85 +11,83 @@
 
 namespace Gaia\Behavioral;
 
+use \XMLReader;
+
 /**
  * Abstract class that provides general WorkBook features.
  *
  * @author Arif Muslax <muslax@gmail.com>
  */
-abstract class WorkBook
+final class WorkBook
 {
-    private \DOMDocument $dom;
-    
-    // private \DOMElement $docroot;
-    
-    // private \DOMXPath $xpath;
-    
-    protected function __construct() { }
-    
-    protected function validate(\DOMDocument $dom)
+    public static function validate(string $URI, string $rngSchema, array &$propertyBag, array &$logs)
     {
-        $doc = $dom->documentElement;
-        $xpath = $this->getXPath();
+        $reader = new \XMLReader();
+        $reader->open($URI);
+        $reader->setRelaxNGSchema($rngSchema);
+        libxml_use_internal_errors(TRUE);
         
-        // It has to be WorkBook and has id
-        if ($doc->nodeName != 'WorkBook') return false;
-        if (strlen($doc->getAttribute('id')) < 16) return false;
-    }
-    
-    /**
-     * Create WorkBook instance from XML file.
-     *
-     * @return WorkBook object
-     * @param string $path
-     *
-     * @throws \Exception
-     */
-    protected abstract static function createFromXmlFile($path) : WorkBook;
-    
-    /**
-     * Inits...
-     *
-     * @return void
-     * @param DOMDocument
-     */
-    protected function init(\DOMDocument $dom)
-    {
-        $this->dom = $dom;
-        // $this->xpath = new \DOMXPath($dom);
-        // $this->documentElement = $dom->documentElement;
-        // $doc = $dom->documentElement;
-    }
-    
-    /**
-     * Returns DOMDocument from the XML WorkBook
-     *
-     * @return DOMDocument
-     */
-    public function getDOM() : \DOMDocument
-    {
-        return $this->dom;
-    }
-    
-    /**
-     * Returns the root of the XML WorkBook.
-     *
-     * @return DOMElement
-     */
-    public function getDocumentElement() : \DOMElement
-    {
-        return $this->dom->documentElement;
-    }
-    
-    /**
-     * Returns DOMXPath object.
-     *
-     * @return DOMXPath
-     */
-    public function getXPath() : \DOMXPath
-    {
-        if (! isset($this->xpath)) {
-            $this->xpath = new \DOMXPath($this->dom);
+        $depth1 = '';
+        $depth2 = '';
+        $depth3 = '';
+        $depth4 = '';
+        $depth5 = '';
+        
+        while ($reader->read()) {
+            // If not valid, collect log
+            if (! $reader->isValid()) {
+                $xmlError = libxml_get_last_error();
+                if (count($logs) == 0) {
+                    $logs[] = [
+                        'message' => trim($xmlError->message),
+                        'file' => $xmlError->file,
+                        'line' => $xmlError->line
+                    ];
+                } else {
+                     $compare = $logs[count($logs) -1];
+                     // We only log different line numbers
+                     if ($compare['line'] != $xmlError->line) {
+                         $logs[] = [
+                             'message' => trim($xmlError->message),
+                             'file' => $xmlError->file,
+                             'line' => $xmlError->line
+                         ];
+                     }
+                }
+            }
+            
+            switch ($reader->depth) {
+                case 1: $depth1 = $reader->localName; break;
+                case 2: $depth2 = $reader->localName; break;
+                case 3: $depth3 = $reader->localName; break;
+                case 4: $depth4 = $reader->localName; break;
+                case 5: $depth5 = $reader->localName; break;
+            }
+            
+            // META
+            if ($depth1 == 'META' && $reader->nodeType == \XMLREADER::ELEMENT) {
+                if ($reader->getAttribute('value') !== null) {
+                    if (! isset($propertyBag['META'])) $propertyBag['META'] = [];
+                    $propertyBag['META'][$reader->localName] = $reader->getAttribute('value');
+                }
+                if ($depth2 == 'likert' && $depth3 == 'Option') {
+                    if (! isset($propertyBag['META']['likert'])) $propertyBag['META']['likert'] = [];
+                    $seq = count($propertyBag['META']['likert']) +1;
+                    $propertyBag['META']['likert'][] = [
+                        'seq' => $seq,
+                        'value' => $reader->readString()
+                    ];
+                }
+            }
+            
+            // INTRO
+            if ($depth1 == 'BookIntro' && $reader->nodeType == \XMLREADER::ELEMENT) {
+                $propertyBag['Intro'] = htmlspecialchars($reader->readString());
+            }
+            
+            // TODO BOOLBODY
+            
+            // TODO EPILOG
         }
-        return $this->xpath;
     }
-} // END abstract class WorkBook
+} // END class WorkBook
