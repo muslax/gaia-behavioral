@@ -10,7 +10,7 @@ class SimpleModule extends Module
     public function __construct($book = null)
     {
         parent::__construct($book);
-        // if ($book instanceof WorkBook) {
+        // if ($book instanceof Workbook) {
         //     $this->book = $book;
         //     $this->init_books();
         // }
@@ -21,7 +21,7 @@ class SimpleModule extends Module
         return ['SCORE' => 'TEST'];
     }
     
-    public function generateWorkBook(Evidence $evidence, array $options = []) : SimpleWorkBook
+    public function generateWorkbook(Evidence $evidence, array $options = []) : SimpleWorkbook
     {
         return $this->book;
     }

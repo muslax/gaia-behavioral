@@ -10,9 +10,9 @@ optionsNums:   2 / 4 / 5
 optionsSelect: 1 / 2
 evidenceType:  Option / Writing / Behavior
 testItems:     Jumlah soal
-releaseDate:   Tanggal rilis WorkBook
+releaseDate:   Tanggal rilis Workbook
 -->
-<WorkBook
+<Workbook
     id            = "SIMPLE-89208d7A8201"
     moduleName    = "SIMPLE Default Module"
     moduleTitle   = "Gaia Behavior Simple Module"
@@ -106,4 +106,4 @@ releaseDate:   Tanggal rilis WorkBook
     <Epilog>
         <p>Wassalam.</p>
     </Epilog>
-</WorkBook>
+</Workbook>
