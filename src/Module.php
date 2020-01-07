@@ -24,102 +24,60 @@ abstract class Module
 {
     private int $type; // GB_MOD_INTRAY GB_MOD_CSI
     
-    private string $xmlURI;
-    
-    private string $rngURI;
-    
     private array $propertyBag;
     
     private array $xmlErrors;
     
     private array $elements;
     
-    /** property accessors */
+    private string $xmlURI;
     
-    public function getProperty(string $prop) : ?mixed
-    {
-        
-    }
+    private string $schemaURI;
     
-    public function getModuleType() : int
-    {
-        
-    }
+    private bool $validated = false;
     
-    
-    
-    
-    private WorkBook $book;
-    
-    private array $meta;
-    
-    private array $elements;
-    
-    private string $intro;
-    
-    private array $sections;
-    
-    
-    private string $_id;
-    private string $_source;
-    private string $_releaseDate;
-    private string $_moduleName;
-    private string $_moduleTitle;
-    private string $_moduleVersion;
-    private string $_workbookType;
-    private string $_evidenceType;
-    private string $_optionsMode;
-    private int    $_optionsNums;
-    private int    $_optionsSelect;
-    private int    $_testItems;
-    
-    private array $bookMeta = [];
-    
-    private array $elements;
-    
-    private function init_books()
-    {
-        $dom = $this->book->getDOM();
-        $doc = $dom->documentElement;
-        
-        $this->_id = $doc->getAttribute('id');
-        $this->_source = $dom->documentURI;
-        $this->_releaseDate = $doc->getAttribute('releaseDate');
-        $this->_moduleName = $doc->getAttribute('moduleName');
-        $this->_moduleTitle = $doc->getAttribute('moduleTitle');
-        $this->_moduleVersion = $doc->getAttribute('moduleVersion');
-        $this->_workbookType = $doc->getAttribute('workbookType');
-        $this->_evidenceType = $doc->getAttribute('evidenceType');
-        $this->_optionsMode = $doc->getAttribute('optionsMode');
-        $this->_optionsNums = intval($doc->getAttribute('optionsNums'));
-        $this->_optionsSelect = intval($doc->getAttribute('optionsSelect'));
-        $this->_testItems = intval($doc->getAttribute('testItems'));
-    }
     
     protected function __construct($book = null)
     {
-        if ($book instanceof WorkBook) {
-            $this->book = $book;
-            $this->init_books();
-        }
+        
     }
     
-    /**
-     * Set or change workbook for this module.
-     *
-     * @return Module object
-     * @param WorkBook $book
-     *
-     * @throws \Exception
-     */
-    public function setWorkBook(WorkBook $book) : Module
+    
+    /** property accessors */
+    
+    public function getElements() : array
     {
-        if (! $book instanceof WorkBook) {
-            throw new \Exception("Bukan WorkBook yang diberikan.");
-        }
-        $this->book = $book;
-        $this->init_books();
-        return $this;
+        return $this->elements;
+    }
+    
+    public function getWorkBookMeta(string $prop) : ?mixed
+    {
+        return $this->propertyBag[$prop];
+    }
+    
+    public function getAppWorkBook(string $format = 'JSON') : string
+    {
+        
+    }
+    
+
+    
+    
+    
+    
+    public function validateWorkbook()
+    {
+        
+    }
+    
+    public function setWorkBook(string $URI)
+    {
+        
+    }
+    
+    public function setSchema(string $URI)
+    {
+        
     }
     
     /**
