@@ -13,7 +13,7 @@ namespace Gaia\Behavioral;
 
 use Gaia\Behavioral\Element;
 use Gaia\Behavioral\Evidence;
-use Gaia\Behavioral\WorkBook;
+use Gaia\Behavioral\Workbook;
 
 /**
  * Class that define Behavioral Module.
@@ -50,12 +50,12 @@ abstract class Module
         return $this->elements;
     }
     
-    public function getWorkBookMeta(string $prop) : ?mixed
+    public function getWorkbookMeta(string $prop) : ?mixed
     {
         return $this->propertyBag[$prop];
     }
     
-    public function getAppWorkBook(string $format = 'JSON') : string
+    public function getAppWorkbook(string $format = 'JSON') : string
     {
         
     }
@@ -70,7 +70,7 @@ abstract class Module
         
     }
     
-    public function setWorkBook(string $URI)
+    public function setWorkbook(string $URI)
     {
         
     }
@@ -91,14 +91,14 @@ abstract class Module
     public abstract function score(Evidence $evidence) : array;
     
     /**
-     * Generate WorkBook object with options.
+     * Generate Workbook object with options.
      *
      * @author Arif Muslax <muslax@gmail.com>
      *
      * @return object
      * @param mixed
      */
-    public abstract function generateWorkBook(Evidence $evidence, array $options = []) : ?object;
+    public abstract function generateWorkbook(Evidence $evidence, array $options = []) : ?object;
     
     /**
      * Generates report.

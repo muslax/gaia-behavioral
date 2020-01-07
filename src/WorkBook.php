@@ -14,11 +14,11 @@ namespace Gaia\Behavioral;
 use \XMLReader;
 
 /**
- * Abstract class that provides general WorkBook features.
+ * Abstract class that provides general Workbook features.
  *
  * @author Arif Muslax <muslax@gmail.com>
  */
-final class WorkBook
+final class Workbook
 {
     public static function validate(string $URI, string $rngSchema, array &$propertyBag, array &$logs)
     {
@@ -90,4 +90,4 @@ final class WorkBook
             // TODO EPILOG
         }
     }
-} // END class WorkBook
+} // END class Workbook
