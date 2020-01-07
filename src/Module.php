@@ -22,6 +22,44 @@ use Gaia\Behavioral\WorkBook;
  */
 abstract class Module
 {
+    private int $type; // GB_MOD_INTRAY GB_MOD_CSI
+    
+    private string $xmlURI;
+    
+    private string $rngURI;
+    
+    private array $propertyBag;
+    
+    private array $xmlErrors;
+    
+    private array $elements;
+    
+    /** property accessors */
+    
+    public function getProperty(string $prop) : ?mixed
+    {
+        
+    }
+    
+    public function getModuleType() : int
+    {
+        
+    }
+    
+    
+    
+    
+    private WorkBook $book;
+    
+    private array $meta;
+    
+    private array $elements;
+    
+    private string $intro;
+    
+    private array $sections;
+    
+    
     private string $_id;
     private string $_source;
     private string $_releaseDate;
@@ -34,8 +72,6 @@ abstract class Module
     private int    $_optionsNums;
     private int    $_optionsSelect;
     private int    $_testItems;
-
-    private WorkBook $book;
     
     private array $bookMeta = [];
     
