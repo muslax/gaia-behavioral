@@ -24,8 +24,31 @@ final class GB
     /** Reserved keys for BehavioralElement */
     const ELEMENT_RESERVED_KEYS  = ['description', 'alias'];
     
-    /** LEGAL MODULES */
-    const GB_VALID_MODULES = ["AIME", "CSI", "PSI", "GPQ", "MATE", "GATE", "SJT", "PRO-L", "INTRAY", "WAWANCARA", "FGD"];
+    const GB_MOD_AIME        = 1;
+    
+    const GB_MOD_CSI         = 2;
+    
+    const GB_MOD_FGD         = 3;
+    
+    const GB_MOD_GATE        = 4;
+    
+    const GB_MOD_GPQ         = 5;
+    
+    const GB_MOD_INTRAY      = 6;
+    
+    const GB_MOD_MATE        = 7;
+    
+    const GB_MOD_PSI         = 8;
+    
+    const GB_MOD_SJT         = 9;
+    
+    const GB_MOD_INTERVIEW   = 10;
+    
+    const GB_MOD_PRO_L       = 11;
+    
+    const GB_MOD_PRO_M       = 12;
+    
+    const GB_MOD_PRO_DM      = 13;
     
     /** GB */
     const GB_EVIDENCE_OPTION     = 'Option';
@@ -59,10 +82,4 @@ final class GB
     
     /** GB */
     const GB_OPTIONS_SELECT_2    = 2;
-    
-    /** GB */
-    const GB_MODULE_AIME_FORMAL  = "AIME Formal Name";
-    
-    /** GB */
-    const GB_MODULE_AIME_SHORT   = "G-AIME";
 } // END final class GB
