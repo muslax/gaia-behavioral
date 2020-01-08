@@ -6,4 +6,5 @@ composer.lock
 # Directories
 .idea/
 vendor/
+tests/
 local-tests/
