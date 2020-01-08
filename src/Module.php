@@ -15,6 +15,8 @@ use Gaia\Behavioral\Element;
 use Gaia\Behavioral\Evidence;
 use Gaia\Behavioral\Workbook;
 
+use \DOMDocument;
+
 /**
  * Class that define Behavioral Module.
  *
@@ -22,63 +24,158 @@ use Gaia\Behavioral\Workbook;
  */
 abstract class Module
 {
-    private int $type; // GB_MOD_INTRAY GB_MOD_CSI
+    protected int   $type; // GB_MOD_INTRAY GB_MOD_CSI
     
-    private array $propertyBag;
+    private array   $properties = [];
     
-    private array $xmlErrors;
+    private array   $xmlErrors = [];
     
-    private array $elements;
+    private array   $elements;
     
-    private string $xmlURI;
+    private string  $xmlURI;
     
-    private string $schemaURI;
+    private string  $schemaURI;
     
-    private bool $validated = false;
+    private bool    $xmlIsValid = false;
+    
+    private bool    $schemaIsValid = false;
+    
+    private bool    $workbookIsValid = false;
     
     
-    protected function __construct($book = null)
+    // protected function __construct()
+    // {
+    //
+    // }
+    
+    
+    /**
+     * Returns module type.
+     *
+     */
+    public function getType() : int
     {
-        
+        return $this->type;
+    } // END public class getType()
+    
+    public function getProperties() : array
+    {
+        return $this->properties ? $this->properties : [];
     }
-    
-    
-    /** property accessors */
     
     public function getElements() : array
     {
-        return $this->elements;
+        return $this->elements ? $this->elements : [];
     }
     
-    public function getWorkbookMeta(string $prop) : ?mixed
+    public function getXmlURI() : ?string
     {
-        return $this->propertyBag[$prop];
+        return $this->xmlURI ? $this->xmlURI : null;
     }
     
-    public function getAppWorkbook(string $format = 'JSON') : string
+    public function getSchemaURI() : ?string
     {
+        return $this->schemaURI ? $this->schemaURI : null;
+    }
+    
+    public function getXmlErrors() : array
+    {
+        return $this->xmlErrors ? $this->xmlErrors : [];
+    }
+    
+    public function getClientWorkbook(string $format = 'JSON') : string
+    {
+        return Workbook::createClientJSONWorkbook($this->xmlURI);
+    }
+    
+    public function isXmlValid() : bool
+    {
+        return $this->xmlIsValid;
+    }
+    
+    public function isSchemaValid() : bool
+    {
+        return $this->schemaIsValid;
+    }
+    
+    public function isWorkbookValid() : bool
+    {
+        return $this->workbookIsValid;
+    }
+    
+    public function setWorkbook(string $xmlURI)
+    {
+        $this->xmlURI = $xmlURI;
         
+        if ($this->checkXml($xmlURI)) {
+            $this->xmlIsValid = true;
+            if ($this->schemaIsValid) {
+                $this->workbookIsValid = $this->validateWorkbook();
+            }
+        } else {
+            $this->xmlIsValid = false;
+            $this->workbookIsValid = false;
+        }
     }
     
-
-    
-    
-    
-    
-    public function validateWorkbook()
+    public function setSchema(string $schemaURI)
     {
+        $this->schemaURI = $schemaURI;
         
+        if ($this->checkXml($schemaURI)) {
+            $this->schemaIsValid = true;
+            if ($this->xmlIsValid) {
+                $this->workbookIsValid = $this->validateWorkbook();
+            }
+        } else {
+            $this->schemaIsValid = false;
+            $this->workbookIsValid = false;
+        }
     }
     
-    public function setWorkbook(string $URI)
+    protected function validateWorkbook()
     {
+        $this->xmlErrors = [];
         
+        Workbook::validateAndPopulate(
+            $this->xmlURI,
+            $this->schemaURI,
+            $this->properties,
+            $this->xmlErrors
+        );
+        
+        // echo "ERRORS: ". count($this->xmlErrors) . "\n";
+        return count($this->xmlErrors) == 0;
     }
     
-    public function setSchema(string $URI)
+    private function checkXml($uri)
     {
+        if (! file_exists($uri)) {
+            $this->xmlErrors[] = "File not found: ". $uri;
+            return false;
+        }
         
+        // https://stackoverflow.com/questions/1241728/can-i-try-catch-a-warning
+        
+        set_error_handler(function($errno, $errstr, $errfile, $errline, $errcontext) {
+            throw new \ErrorException($errstr, 0, $errno, $errfile, $errline);
+        });
+        
+        try {
+            $dom = new \DOMDocument();
+            if ($dom->load($uri)) {
+                return true;
+            }
+        } catch (\ErrorException $e) {
+            $this->xmlErrors[] = 'Error ['. $e->getCode(). ']: '. $e->getMessage();
+        }
+        
+        restore_error_handler();
+        
+        return false;
     }
+    
+    
     
     /**
      * Generate elements' score given the evidence.
