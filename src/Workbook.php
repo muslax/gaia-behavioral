@@ -106,7 +106,7 @@ final class Workbook
     }
     
     /**
-     * TODO: LIKERT, OPTIONS, TEASER-TAIL
+     * TODO: LIKERT, OPTIONS, TEASER-TAIL, ELEMENTS
      */
     public static function createClientJSONWorkbook(string $workbookURI)
     {
