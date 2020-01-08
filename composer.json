@@ -1,6 +1,6 @@
 {
-    "name": "gaia/behavioral",
-    "description": "Gaia Behavioral",
+    "name": "muslax/gaia-behavioral",
+    "description": "Gaia Behavioral Package",
     "type": "library",
     "homepage": "http://strenan.net",
     "license": "MIT",
