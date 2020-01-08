@@ -56,7 +56,7 @@ abstract class Module
     public function getType() : int
     {
         return $this->type;
-    } // END public class getType()
+    }
     
     public function getProperties() : array
     {
@@ -186,16 +186,6 @@ abstract class Module
      * @param Evidence
      */
     public abstract function score(Evidence $evidence) : array;
-    
-    /**
-     * Generate Workbook object with options.
-     *
-     * @author Arif Muslax <muslax@gmail.com>
-     *
-     * @return object
-     * @param mixed
-     */
-    public abstract function generateWorkbook(Evidence $evidence, array $options = []) : ?object;
     
     /**
      * Generates report.
